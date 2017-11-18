@@ -44,9 +44,10 @@ code{  padding: 2px 4px;font-size: 90%;color: #c7254e;background-color: #f9f2f4;
       </div>
     </div>
   </div>
-  <script src="http://192.168.1.102:8000/index.js"></script>
+  <script src="http://localhost:8000/index.js"></script>
   <script>
     var biu = new Biu({
+      socket:'http://localhost:8360',
       defaultQueue:[
         { text: '我是一个弹幕' },
         { text: '我是一个弹幕超级大的弹幕',style:{top:'0px',color:'red','font-size':'500%'} },

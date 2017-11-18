@@ -58,7 +58,7 @@ exports.websocket = {
     // adapter: null,                  // 默认无 adapter
     messages: [{
       open: '/websocket/open',
-      addUser: '/websocket/addUser'
+      message: '/websocket/message'
     }]
   }
 }
