@@ -1,0 +1,3 @@
+[submodule "www/static/biu.js"]
+	path = www/static/biu.js
+	url = https://github.com/zhengqingxin/biu.js
