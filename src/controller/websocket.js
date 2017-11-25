@@ -1,6 +1,15 @@
 module.exports = class extends think.Controller {
     constructor(...arg) {
       super(...arg);
+      // const nsp = this.io.of('/test');
+    // nsp.on('connection', function(socket){
+    //   console.log('a test namespace user connected!');
+    //   socket.emit('connected', 'a test namespace user connected!');  
+    //   socket.on('message',function(data){
+    //     socket.emit('push',data)
+    //   })
+    // });
+
     }
   
     openAction() {

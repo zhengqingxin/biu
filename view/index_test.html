@@ -300,7 +300,7 @@
   <script src="/static/biu.js/dist/biu.min.js"></script>
   <script>
     var biu = new Biu({
-      token:'index',
+      token:'test',
       socket:'http://localhost:8360',
       defaultQueue: [
         { text: '我是一个弹幕' },
@@ -309,7 +309,7 @@
     biu.start();
 
     setInterval(()=>{
-      biu.send({text:'这是index项目'})
+      biu.send({text:'这是test项目'})
     },1000)
     
     var toggle = document.getElementById('toggle');
