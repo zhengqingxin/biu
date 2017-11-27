@@ -13,6 +13,7 @@ module.exports = class extends Base {
     if (insertId.type === 'exist') {
       return this.fail('duplicated project name');
     }
+    global.getWhiteDomains();
     return this.success({id: insertId});
   }
 
