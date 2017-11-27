@@ -12,7 +12,8 @@ module.exports = class extends think.Model {
     }).thenAdd({
       name: data.name,
       create_time,
-      email:data.email
+      email:data.email,
+      domain:data.domain
     });
   }
 };
