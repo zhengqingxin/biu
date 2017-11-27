@@ -80,6 +80,7 @@
       padding: 0 10px;
       text-shadow: 0 -1px 0 #000;
       width: 400px;
+      text-align: center;
     }
 
     .ie .webdesigntuts-workshop input {
@@ -134,7 +135,7 @@
       text-shadow: 0 -1px 0 #000;
       width: 100%;
     }
-
+    
     .webdesigntuts-workshop button:hover,
     .webdesigntuts-workshop button:focus {
       background: #292929;
@@ -177,15 +178,6 @@
       width: 100%;
       height: 100%;
       cursor: pointer;
-    }
-
-    .switch {
-      width: 180px;
-      height: 55px;
-      position: absolute;
-      left: 50%;
-      bottom: 50px;
-      transform: translateX(-50%);
     }
 
     .switch label {
@@ -280,19 +272,45 @@
       -webkit-transition: all .5s ease;
       transition: all .5s ease;
     }
+
+    #try{
+      width:30%;
+      height:50px;
+      border: none;
+      border-bottom:1px solid #444;
+      background: #151515;
+      display: inline-block;
+      vertical-align: top;
+      color:#fff;
+      text-align: center;
+      font-size:130%;
+    }
+    #try:focus{
+      border-bottom-color: #393;
+      outline: none;   
+    }
+
+    .switch {
+      width: 180px;
+      height: 55px;
+      /* display: inline-block; */
+      margin-top:15px;
+      position:relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .footer{
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
   <section class="webdesigntuts-workshop">
-    <div class="switch">
-      <input type="checkbox" name="toggle" id="toggle" checked>
-      <label for="toggle">
-        <i></i>
-      </label>
-      <span></span>
-    </div>
-
     <form method="post" id="form">
       <input id="project" type="text" placeholder="项目名称，允许数字、字母、下划线组合">
       <input id="email" type="email" placeholder="项目负责人邮箱">
@@ -302,6 +320,17 @@
       <!-- <input type="text" placeholder="服务端授权域名 / ip？"> -->
     </form>
   </section>
+  <div class="footer">
+      <input placeholder="试试？" id="try" />     
+      <div class="switch">
+          <input type="checkbox" name="toggle" id="toggle" checked>
+          <label for="toggle">
+            <i></i>
+          </label>
+          <span></span>
+      </div>     
+  </div>
+ 
   <script src="/static/biu.js/dist/biu.min.js"></script>
   <script>
     var biu = new Biu({
@@ -386,6 +415,14 @@
           }
         });
     }
+
+    var tryBtn = document.getElementById('try');
+    tryBtn.addEventListener('keypress',function(e){
+      var value = e.target.value;      
+      if(e.keyCode === 13 && value){
+        biu.send({text:value})
+      }
+    })
   </script>
 </body>
 
