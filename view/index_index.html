@@ -25,7 +25,7 @@
       width: 100%;
     }
 
-    .webdesigntuts-workshop:before,
+    /* .webdesigntuts-workshop:before,
     .webdesigntuts-workshop:after {
       content: '';
       display: block;
@@ -34,7 +34,7 @@
       margin: 0 0 0 -400px;
       position: absolute;
       width: 800px;
-    }
+    } */
 
     .webdesigntuts-workshop:before {
       background: #444;
@@ -66,7 +66,8 @@
       background: #222;
       background: linear-gradient(#333, #222);
       border: 1px solid #444;
-      border-radius: 5px 0 0 5px;
+      /* border-radius: 5px 0 0 5px; */
+      border-radius: 5px;
       box-shadow: 0 2px 0 #000;
       color: #888;
       display: block;
@@ -116,8 +117,8 @@
       background: linear-gradient(#333, #222);
       box-sizing: border-box;
       border: 1px solid #444;
-      border-left-color: #000;
-      border-radius: 0 5px 5px 0;
+      /* border-left-color: #000; */
+      /* border-radius: 0 5px 5px 0; */
       box-shadow: 0 2px 0 #000;
       color: #fff;
       display: block;
@@ -131,14 +132,14 @@
       padding: 0;
       position: relative;
       text-shadow: 0 -1px 0 #000;
-      width: 80px;
+      width: 100%;
     }
 
     .webdesigntuts-workshop button:hover,
     .webdesigntuts-workshop button:focus {
       background: #292929;
       background: linear-gradient(#393939, #292929);
-      color: #b9f3fe;
+      color: #5f5;
       outline: none;
     }
 
@@ -292,35 +293,86 @@
       <span></span>
     </div>
 
-    <form action="" method="">
-      <input type="text" placeholder="客户端授权域名？">
-      <input type="text" placeholder="服务端授权域名 / ip？">
+    <form method="post" id="form">
+      <input id="project" name="name" type="text" placeholder="项目名称，允许数字、字母、下划线组合">
+      <button id="submit">提 交</button>
+      <!-- <input type="text" placeholder="客户端授权域名？"> -->
+      <!-- <input type="text" placeholder="服务端授权域名 / ip？"> -->
     </form>
   </section>
   <script src="/static/biu.js/dist/biu.min.js"></script>
   <script>
     var biu = new Biu({
-      token:'index',
-      socket:'http://localhost:8360',
+      name: 'index',
+      socket: 'http://localhost:8360',
       defaultQueue: [
         { text: '我是一个弹幕' },
+        { text: '这是申请项目页面' },
       ],
     });
     biu.start();
 
-    setInterval(()=>{
-      biu.send({text:'这是index项目'})
-    },1000)
-    
+    // setInterval(()=>{
+    //   biu.send({text:'这是index项目'})
+    // },1000)
+
     var toggle = document.getElementById('toggle');
-    toggle.addEventListener('change',function(e){
+    toggle.addEventListener('change', function (e) {
       var checked = e.target.checked;
-      if(checked){
+      if (checked) {
         biu.start();
-      }else{
+      } else {
         biu.stop();
       }
     })
+
+    var BASE_URL = location.origin;
+    var GET_PROJECT = BASE_URL + '/project/get';
+    var ADD_PROJECT = BASE_URL + '/project/post';
+    var data = {};
+
+    var projectInput = document.getElementById('project');
+    projectInput.addEventListener('blur', function (e) {
+      var name = e.target.value;
+      data.name = name;
+      fetch(GET_PROJECT + '?name=' + name)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+        })
+    })
+
+    var submitBtn = document.getElementById('submit');
+    submitBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!data.name) {
+        alert('项目名不能为空');
+        return;
+      }
+      post(ADD_PROJECT, data, function (res) {
+        alert('添加项目成功！');
+      });
+    })
+
+    function post(url, data, callback) {
+      var formData = new FormData();
+
+      for (var name in data) {
+        formData.append(name, data[name]);
+      }
+      fetch(url, {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(res => {
+          if(res.errno != 0){
+            alert(res.errmsg)
+          }else{
+            callback()
+          }
+        });
+    }
   </script>
 </body>
 

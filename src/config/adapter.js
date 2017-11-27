@@ -1,6 +1,7 @@
 const nunjucks = require('think-view-nunjucks');
 const { Console, File, DateFile } = require('think-logger3');
 const socketio = require('think-websocket-socket.io');
+const mysql = require('think-model-mysql');
 const isDev = think.env === 'development';
 const path = require('path');
 
@@ -70,3 +71,27 @@ exports.websocket = {
     ]
   }
 }
+
+/**
+ * model adapter config
+ * @type {Object}
+ */
+exports.model = {
+  type: 'mysql',
+  common: {
+    logConnect: isDev,
+    logSql: isDev,
+    logger: msg => think.logger.info(msg)
+  },
+  mysql: {
+    handle: mysql,
+    database: '',
+    prefix: '',
+    encoding: 'utf8',
+    host: '127.0.0.1',
+    port: '',
+    user: 'root',
+    password: 'root',
+    dateStrings: true
+  }
+};
