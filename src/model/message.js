@@ -8,4 +8,8 @@ module.exports = class extends think.Model {
       project_name
     });
   }
+
+  async get(filter){
+    return this.where(filter).select();
+  }
 };

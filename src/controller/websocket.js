@@ -8,13 +8,16 @@ module.exports = class extends think.Controller {
       // this.broadcast('joined', 'There is a new client joined successfully!')
     }
   
-    messageAction() {
+    async messageAction() {
       if(!this.isWebsocket){
         return this.fail();
       }
       this.broadcast('push', this.wsData);
       const project = this.websocket.nsp.name.substring(1);
-      this.model('message').addItem(this.wsData,project);
+      const ret = await this.model('project').getByName(project);
+      if(ret.length > 0){
+        this.model('message').addItem(this.wsData,project);
+      }
     }
 
     closeAction(){

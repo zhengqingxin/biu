@@ -7,6 +7,6 @@ global.getWhiteDomains = async () => {
     let d = domains[i].domain.split(',');
     think.wsDomains = think.wsDomains.concat(d);
   }
-  think.logger.info('ws domain list:', think.wsDomains)
+  think.logger.info('ws domain list:', think.wsDomains.join())
 }
 global.getWhiteDomains();

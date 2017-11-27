@@ -16,5 +16,4 @@ module.exports = class extends Base {
     global.getWhiteDomains();
     return this.success({id: insertId});
   }
-
 };
