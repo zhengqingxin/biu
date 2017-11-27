@@ -295,6 +295,7 @@
 
     <form method="post" id="form">
       <input id="project" name="name" type="text" placeholder="项目名称，允许数字、字母、下划线组合">
+      <input id="email" name="email" type="email" placeholder="项目负责人邮箱">      
       <button id="submit">提 交</button>
       <!-- <input type="text" placeholder="客户端授权域名？"> -->
       <!-- <input type="text" placeholder="服务端授权域名 / ip？"> -->
@@ -332,6 +333,8 @@
     var data = {};
 
     var projectInput = document.getElementById('project');
+    var emailInput = document.getElementById('email');
+    
     projectInput.addEventListener('blur', function (e) {
       var name = e.target.value;
       data.name = name;
@@ -345,8 +348,12 @@
     var submitBtn = document.getElementById('submit');
     submitBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      data.email = emailInput.value;      
       if (!data.name) {
         alert('项目名不能为空');
+        return;
+      }else if (!data.email){
+        alert('负责人邮箱不能为空');
         return;
       }
       post(ADD_PROJECT, data, function (res) {
