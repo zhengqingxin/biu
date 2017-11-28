@@ -1,8 +1,8 @@
 {
   "apps": [{
-    "name": "biu-admin",
+    "name": "biu",
     "script": "production.js",
-    "cwd": "/Users/coderzsmac/Desktop/github/biu-admin",
+    "cwd": "",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,
