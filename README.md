@@ -10,4 +10,10 @@
 
 1. git clone https://github.com/zhengqingxin/biu.git
 2. cd biu && npm install
+3. 导入数据库
+```
+mysql> create database biu;
+mysql> use biu;
+mysql> source `/home/zhengqingxin/biu/db/biu.sql`;
+```
 3. pm2 start pm2.json
