@@ -1,6 +1,6 @@
 var biu = new Biu({
   name: 'index',
-  socket: 'http://localhost:8360',
+  socket: location.protocol + '//' + location.hostname,
   defaultQueue: [
     { text: '我是一个弹幕' },
     { text: '这是申请项目页面' },
