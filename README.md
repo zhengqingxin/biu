@@ -16,4 +16,26 @@ mysql> create database biu;
 mysql> use biu;
 mysql> source `/home/zhengqingxin/biu/db/biu.sql`;
 ```
+4.修改 `src/config/adapter.js` 下的数据库配置，例如：
+```js
+exports.model = {
+  type: 'mysql',
+  common: {
+    logConnect: isDev,
+    logSql: isDev,
+    logger: msg => think.logger.info(msg)
+  },
+  mysql: {
+    handle: mysql,
+    database: 'biu',
+    prefix: '',
+    encoding: 'utf8',
+    host: '127.0.0.1',
+    port: '',
+    user: 'root',
+    password: 'root',
+    dateStrings: true
+  }
+};
+```
 3. pm2 start pm2.json
