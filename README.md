@@ -6,7 +6,7 @@
 ## 如何使用
 测试可以直接使用[https://biu.zhengqingxin.com](https://biu.zhengqingxin.com)
 ### 填写相应配置
-项目首页为系统配置以及预览页面。配置如下：
+项目首页为系统配置以及预览页面。
 * 项目名称：不可重复，每个项目对应 `socket.io` 中的一个 `namespace`
 * 项目负责人
 * 允许访问的域名：客户端域名白名单
@@ -47,7 +47,7 @@ mysql> create database biu;
 mysql> use biu;
 mysql> source `/home/zhengqingxin/biu/db/biu.sql`;
 ```
-4.修改 `src/config/adapter.js` 下的数据库配置，例如：
+5. 修改 `src/config/adapter.js` 下的数据库配置，例如：
 ```js
 exports.model = {
   type: 'mysql',
