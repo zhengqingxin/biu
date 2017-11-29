@@ -36,11 +36,11 @@
 ps：关于 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
 
 
-## 安装
+## 部署
 
 1. git clone https://github.com/zhengqingxin/biu.git
-2. git submodule update --init --recursive
-3. cd biu && npm install
+2. cd biu && git submodule update --init --recursive
+3. npm install
 4. 导入数据库
 ```
 mysql> create database biu;
