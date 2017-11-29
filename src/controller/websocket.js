@@ -6,6 +6,7 @@ module.exports = class extends think.Controller {
   openAction() {
     // this.emit('connected', 'This client opened successfully!');
     // this.broadcast('joined', 'There is a new client joined successfully!')
+    console.log('user coming')
   }
 
   async messageAction() {
