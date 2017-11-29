@@ -13,7 +13,7 @@ module.exports = class extends Base {
     if (insertId.type === 'exist') {
       return this.fail('duplicated project name');
     }
-    global.getWhiteDomains();
+    // global.getWhiteDomains();
     return this.success({id: insertId});
   }
 };
