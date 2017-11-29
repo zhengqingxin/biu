@@ -1,6 +1,7 @@
 var biu = new Biu({
   name: 'index',
   socket: location.protocol + '//' + location.hostname + (location.port ? ':'+location.port : '') ,
+  // socket:'http://115.28.139.204:8360',
   defaultQueue: [
     { text: '我是一个弹幕' },
     { text: '这是申请项目页面' },
@@ -53,8 +54,8 @@ submitBtn.addEventListener('click', function (e) {
     return;
   }
   post(ADD_PROJECT, data, function (res) {
-    alert('添加项目成功！',function(){
-      window.open('https://github.com/zhengqingxin/biu')
+    alert('添加项目成功！点击 OK 查看如何在客户端使用。 ',function(){
+      window.open('https://github.com/zhengqingxin/biu#在客户端使用')
     });
   });
 })
