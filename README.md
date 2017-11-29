@@ -7,7 +7,7 @@
 测试可以直接使用[https://biu.zhengqingxin.com](https://biu.zhengqingxin.com)
 ### 填写相应配置
 项目首页为系统配置以及预览页面。配置如下：
-* 项目名称：不可重复，每个项目对应 `socket.io` 中的一个 `namespace`
+* 项目名称：不可重复，每个项目对应 `socket.io` 中的一个 `namespace`
 * 项目负责人
 * 允许访问的域名：客户端域名白名单
 
@@ -33,7 +33,7 @@
 </script>
 
 ```
-ps：关于 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
+ps：关于 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
 
 
 ## 安装
