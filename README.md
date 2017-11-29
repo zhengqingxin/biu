@@ -33,6 +33,8 @@
 </script>
 
 ```
+ps：关于 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
+
 
 ## 安装
 
