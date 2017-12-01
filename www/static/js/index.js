@@ -1,5 +1,5 @@
 var biu = new Biu({
-  name: 'index',
+  name: 'biubiu',
   socket: location.protocol + '//' + location.hostname + (location.port ? ':'+location.port : '') ,
   // socket:'http://115.28.139.204:8360',
   defaultQueue: [

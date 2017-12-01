@@ -16,8 +16,8 @@
     "think-model-mysql": "^1.0.6",
     "think-view": "^1.0.0",
     "think-view-nunjucks": "^1.0.1",
-    "think-websocket": "^1.0.3",
-    "think-websocket-socket.io": "^1.0.3",
+    "think-websocket": "^1.0.5",
+    "think-websocket-socket.io": "^1.0.5",
     "thinkjs": "^3.0.0"
   },
   "devDependencies": {

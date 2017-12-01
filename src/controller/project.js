@@ -13,7 +13,18 @@ module.exports = class extends Base {
     if (insertId.type === 'exist') {
       return this.fail('duplicated project name');
     }
-    // global.getWhiteDomains();
+    global.registerWs(data.name,data.domain);
     return this.success({id: insertId});
+  }
+
+  testAction(){
+    const namespace = 'biubiu';
+    const message = {
+      open: '/websocket/open',
+      message: '/websocket/message',
+    }
+    const websocket = think.app.websocket;
+    const sc = websocket.io.of(namespace);
+    websocket.registerSocket(sc,message);
   }
 };
