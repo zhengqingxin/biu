@@ -1,4 +1,5 @@
 const Base = require('./base.js');
+const generateString = require('crypto-random-string');
 
 module.exports = class extends Base {
   async getAction(){
@@ -8,23 +9,14 @@ module.exports = class extends Base {
   }
 
   async postAction(){
-    const data = this.post();
+    let data = this.post();
+    data.token = generateString(32);
     const insertId = await this.model('project').addItem(data);
     if (insertId.type === 'exist') {
       return this.fail('duplicated project name');
     }
     global.registerWs(data.name,data.domain);
-    return this.success({id: insertId});
+    return this.success({token:data.token});
   }
 
-  testAction(){
-    const namespace = 'biubiu';
-    const message = {
-      open: '/websocket/open',
-      message: '/websocket/message',
-    }
-    const websocket = think.app.websocket;
-    const sc = websocket.io.of(namespace);
-    websocket.registerSocket(sc,message);
-  }
 };

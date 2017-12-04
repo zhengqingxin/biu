@@ -13,7 +13,8 @@ module.exports = class extends think.Model {
       name: data.name,
       create_time,
       email:data.email,
-      domain:data.domain
+      domain:data.domain,
+      token:data.token
     });
   }
 };
