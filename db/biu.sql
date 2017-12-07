@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `project_name` varchar(255) NOT NULL,
-  `data` varchar(500) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `create_time` datetime NOT NULL,
+  `project_name` varchar(255) NOT NULL DEFAULT '',
+  `data` varchar(500) NOT NULL DEFAULT '',
+  `address` varchar(255) NOT NULL DEFAULT '',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2297 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,14 +42,15 @@ DROP TABLE IF EXISTS `project`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `create_time` datetime NOT NULL,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL DEFAULT '',
   `status` int(11) DEFAULT '0' COMMENT '0:不可用  1:可用',
-  `domain` varchar(255) NOT NULL,
+  `domain` varchar(255) NOT NULL DEFAULT '',
+  `token` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +62,4 @@ CREATE TABLE `project` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-28 17:18:59
+-- Dump completed on 2017-12-07 11:04:25
