@@ -20,13 +20,12 @@ global.registerWs = async (nsp, domain) => {
 }
 
 think.beforeStartServer(async () => {
-  console.log('---- before start server --- ');
   const websocket = think.app.websocket;
   const project = await think.model('project').select();
-  let domains = [];
-  project.forEach(item => {
-    domains = domains.concat(item.domain.split(','));
-  });
+  // let domains = [];
+  // project.forEach(item => {
+  //   domains = domains.concat(item.domain.split(','));
+  // });
   const messages = project.map(item=>{
     return {
       namespace:item.name,
@@ -34,6 +33,6 @@ think.beforeStartServer(async () => {
       message: '/websocket/message',
     }
   })
-  think.config('websocket.socketio.allowOrigin', domains);
+  // think.config('websocket.socketio.allowOrigin', domains);
   think.config('websocket.socketio.messages', messages);  
 })
