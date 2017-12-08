@@ -10,13 +10,13 @@ global.registerWs = async (nsp, domain) => {
   websocket.registerSocket(sc, message);
 
   // register domains
-  let wsDomains = domain.split(',');
-  const domains = await think.model('project').field('domain').select();
-  for (let i = 0; i < domains.length; i++) {
-    let d = domains[i].domain.split(',');
-    wsDomains = wsDomains.concat(d);
-  }
-  websocket.io.origins(wsDomains);
+  // let wsDomains = domain.split(',');
+  // const domains = await think.model('project').field('domain').select();
+  // for (let i = 0; i < domains.length; i++) {
+  //   let d = domains[i].domain.split(',');
+  //   wsDomains = wsDomains.concat(d);
+  // }
+  // websocket.io.origins(wsDomains);
 }
 
 think.beforeStartServer(async () => {
