@@ -1,4 +1,5 @@
 const path = require('path');
+const cors = require('kcors');
 const isDev = think.env === 'development';
 
 module.exports = [
@@ -22,6 +23,16 @@ module.exports = [
     enable: !think.isCli,
     options: {
       debug: isDev
+    }
+  },
+  {
+    handle: cors,
+    options: {
+      origin: (ctx) => {
+        return ctx.header.origin;
+      },
+      credentials: true,
+      allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
     }
   },
   {

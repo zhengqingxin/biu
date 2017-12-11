@@ -1,5 +1,5 @@
 module.exports = class extends think.Model {
-  async addItem(data = {},project_name,address) {
+  async addItem(data = {}, project_name, address) {
     const create_time = think.datetime();
     return this.add({
       data: JSON.stringify(data),
@@ -9,7 +9,23 @@ module.exports = class extends think.Model {
     });
   }
 
-  async get(filter){
-    return this.where(filter).select();
+  async get({ projectName, startTime = '', endTime = '', query, page = 1, pageSize = 10 }) {
+    let where = {
+      project_name:projectName
+    };
+    if (startTime) {
+      where.create_time = where.create_time ? where.create_time : {};
+      where.create_time['>='] = startTime;
+    }
+    if (endTime) {
+      where.create_time = where.create_time ? where.create_time : {};
+      where.create_time['<='] = endTime;
+    }
+    if (query) {
+      where.data = where.data ? where.data : {};
+      where.data = ['like', `%${query}%`];
+    }
+
+    return this.where(where).page(page, pageSize).countSelect();
   }
 };

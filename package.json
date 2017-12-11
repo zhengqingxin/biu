@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "crypto-random-string": "^1.0.0",
+    "kcors": "^2.2.1",
     "think-logger3": "^1.0.0",
     "think-model": "^1.1.6",
     "think-model-mysql": "^1.0.6",

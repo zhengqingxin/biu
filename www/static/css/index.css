@@ -1,5 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Cabin:400);
-
+/* @import url(https://fonts.googleapis.com/css?family=Cabin:400); */
+/* cabin-normal - latin */
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: regular;
+  src: url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Cabin'), local('Cabin-Normal'),
+       url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/cabin/cabin-v12-latin-regular.svg#Cabin') format('svg'); /* Legacy iOS */
+}
+  
     html,
     body {
       width: 100%;
@@ -296,4 +309,13 @@
       bottom: 30px;
       width: 100%;
       text-align: center;
+    }
+
+    .text{
+      text-align: center;
+      font-size: 6.5em;
+      letter-spacing: -7px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
     }
