@@ -26,6 +26,6 @@ module.exports = class extends think.Model {
       where.data = ['like', `%${query}%`];
     }
 
-    return this.where(where).page(page, pageSize).countSelect();
+    return this.where(where).order('create_time DESC').page(page, pageSize).countSelect();
   }
 };
