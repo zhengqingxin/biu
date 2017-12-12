@@ -9,7 +9,7 @@ module.exports = class extends think.Model {
     });
   }
 
-  async get({ projectName, startTime = '', endTime = '', query, page = 1, pageSize = 10 }) {
+  async get({ projectName, startTime = '', endTime = '', query, page, pageSize = 10 }) {
     let where = {
       project_name:projectName
     };
@@ -25,7 +25,9 @@ module.exports = class extends think.Model {
       where.data = where.data ? where.data : {};
       where.data = ['like', `%${query}%`];
     }
-
+    if(!page){
+      return this.where(where).order('create_time DESC').select();
+    }
     return this.where(where).order('create_time DESC').page(page, pageSize).countSelect();
   }
 };
