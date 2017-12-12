@@ -6,11 +6,11 @@ module.exports = class extends think.Logic {
         required: true,     // 字段必填
         trim: true,         // 字段需要trim处理
       },
-      domain:{
-        string:true,
-        required:true,
-        trim:true
-      }
+      // domain:{
+      //   string:true,
+      //   required:true,
+      //   trim:true
+      // }
     }
     let flag = this.validate(rules);
     if(!flag){
