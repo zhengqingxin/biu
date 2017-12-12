@@ -1,15 +1,14 @@
 
 # Biu
-
-> Biu 是一套基于 [ThinkJS](http://www.thinkjs.org) 的弹幕服务。本仓库为服务端代码，客户端查看 [这里](https://github.com/zhengqingxin/biu.js)。
+Biu 是一套弹幕服务，专注于 **页面作死** 领域，适用于各种周年庆，节日嗨皮或者各种日常作死等活动。服务分为服务端和[ 客户端 ](https://github.com/zhengqingxin/biu.js)两个项目，本仓库为服务端代码，基于
+[ThinkJS](http://www.thinkjs.org)。
 
 ## 如何使用
-测试可以直接使用[https://biu.zhengqingxin.com](https://biu.zhengqingxin.com)
+测试可以直接使用[ https://biu.zhengqingxin.com](https://biu.zhengqingxin.com)
 ### 填写相应配置
 项目首页为系统配置以及预览页面。
 * 项目名称：不可重复，每个项目对应 `socket.io` 中的一个 `namespace`
 * 项目负责人
-* 允许访问的域名：客户端域名白名单
 
 ### 在客户端使用
 配置成功后，即可在页面中使用，例如：
@@ -33,7 +32,7 @@
 </script>
 
 ```
-ps：关于 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
+ps：具体 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
 
 
 ## 部署
