@@ -26,7 +26,7 @@ var data = {};
 
 var projectInput = document.getElementById('project');
 var emailInput = document.getElementById('email');
-var domainInput = document.getElementById('domain');
+// var domainInput = document.getElementById('domain');
 
 projectInput.addEventListener('blur', function (e) {
   var name = e.target.value;
@@ -42,17 +42,18 @@ var submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
   data.email = emailInput.value;    
-  data.domain = domainInput.value;  
+  // data.domain = domainInput.value;  
   if (!data.name) {
     alert('项目名不能为空');
     return;
   }else if (!data.email){
     alert('负责人邮箱不能为空');
     return;
-  }else if (!data.domain){
-    alert('域名不能为空');
-    return;
   }
+  // else if (!data.domain){
+  //   alert('域名不能为空');
+  //   return;
+  // }
   post(ADD_PROJECT, data, function (res) {
     alert('添加项目成功！点击 OK 查看如何在客户端使用。 ',function(){
       window.open('https://github.com/zhengqingxin/biu#在客户端使用')
