@@ -1,6 +1,6 @@
 
 # Biu
-Biu 是一套弹幕服务，专注于 **页面作死** 领域，适用于各种周年庆，节日嗨皮或者各种日常作死等活动。服务分为服务端和[ 客户端 ](https://github.com/zhengqingxin/biu.js)两个项目，本仓库为服务端代码，基于
+Biu 是一套弹幕服务，专注于 **页面作死** 领域，适用于各种周年庆，节日嗨皮或者各种日常作死等活动。服务分为服务端和[ 客户端 ](https://github.com/zhengqingxin/biu.js)两个项目，本仓库为服务端代码，基于
 [ThinkJS](http://www.thinkjs.org)。
 
 ## 如何使用
