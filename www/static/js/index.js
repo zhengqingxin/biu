@@ -1,21 +1,22 @@
+
+var anime = new Biu.anime();
 var biu = new Biu({
   name: 'biubiu',
   socket: location.protocol + '//' + location.hostname + (location.port ? ':'+location.port : '') ,
-  // socket:'http://115.28.139.204:8360',
-  defaultQueue: [
-    { text: '我是一个弹幕' },
-    { text: '这是申请项目页面' },
-  ],
+  onMessage:(data)=>{
+    anime.run(data)
+  }
 });
-biu.start();
 
 var toggle = document.getElementById('toggle');
 toggle.addEventListener('change', function (e) {
   var checked = e.target.checked;
   if (checked) {
-    biu.start();
+    biu.open();
+    anime.show();
   } else {
     biu.stop();
+    anime.hide();
   }
 })
 
