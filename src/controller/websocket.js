@@ -16,12 +16,15 @@ module.exports = class extends think.Controller {
       return this.fail();
     }
     const address = this.websocket.handshake.address;
-    const lastEmitTime = await this.model('message').field('create_time').order({create_time:'desc'}).where({address}).limit(1).select();
-    if(lastEmitTime.length > 0){
-      const duration = moment().diff(moment(lastEmitTime[0].create_time),'second');
-      if(duration < 1){
-        return this.fail();
-      }
+    // const lastEmitTime = await this.model('message').field('create_time').order({create_time:'desc'}).where({address}).limit(1).select();
+    // if(lastEmitTime.length > 0){
+    //   const duration = moment().diff(moment(lastEmitTime[0].create_time),'second');
+    //   if(duration < 1){
+    //     return this.fail();
+    //   }
+    // }
+    if(this.wsData.text){
+      this.wsData.text = global.encodeForHTML(this.wsData.text);
     }
     this.broadcast('push', this.wsData);
     const project = this.websocket.nsp.name.substring(1);
