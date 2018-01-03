@@ -16,6 +16,9 @@ module.exports = class extends think.Controller {
       return this.fail();
     }
     const address = this.websocket.handshake.address;
+    if(!address){
+      return this.fail();
+    }
     // const lastEmitTime = await this.model('message').field('create_time').order({create_time:'desc'}).where({address}).limit(1).select();
     // if(lastEmitTime.length > 0){
     //   const duration = moment().diff(moment(lastEmitTime[0].create_time),'second');
@@ -23,9 +26,22 @@ module.exports = class extends think.Controller {
     //     return this.fail();
     //   }
     // }
+    const accessLog = await this.cache('access') || {};
+    const now = Date.now();
+    console.log(now);
+    if(accessLog[address] && now - accessLog[address] > 1000){
+      accessLog[address] = now;
+      await this.cache('access',accessLog);
+    }else{
+      return this.fail();
+    }
+
     if(this.wsData.text){
       this.wsData.text = global.encodeForHTML(this.wsData.text);
+    }else if(typeof this.wsData === 'string'){
+      this.wsData = global.encodeForHTML(this.wsData.text);
     }
+    
     this.broadcast('push', this.wsData);
     const project = this.websocket.nsp.name.substring(1);
     const ret = await this.model('project').getByName(project);

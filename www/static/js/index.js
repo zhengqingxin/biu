@@ -101,3 +101,15 @@ window.alert = function(msg,cb){
     vex.dialog.alert(msg);
   }
 }
+
+test.addEventListener('click',function(){
+  var times = 0;
+  var timer = setInterval(function(){
+    if(times > 10000){
+      clearInterval(timer);
+      return;
+    }
+    biu.send('test')
+    times ++
+  })
+})
