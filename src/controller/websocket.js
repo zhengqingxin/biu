@@ -28,8 +28,8 @@ module.exports = class extends think.Controller {
     // }
     const accessLog = await this.cache('access') || {};
     const now = Date.now();
-    console.log(now);
-    if(accessLog[address] && now - accessLog[address] > 1000){
+    accessLog[address] = accessLog[address] || 0;
+    if( now - accessLog[address] > 1000){
       accessLog[address] = now;
       await this.cache('access',accessLog);
     }else{
