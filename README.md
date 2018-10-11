@@ -15,16 +15,20 @@ Biu 是一套弹幕服务，专注于 **页面作死** 领域，适用于各种�
 ``` js
 // 引入js，实际项目里需自己管理或者从 cdn 获取
 <script src="https://biu.zhengqingxin.com/static/biu.js/dist/biu.min.js"></script>
-
-var anime = new Biu.anime();
-var biu = new Biu({
-  name: 'biubiu',
-  socket: location.protocol + '//' + location.hostname + (location.port ? ':'+location.port : '') ,
-  onMessage:(data)=>{
-    anime.run(data)
-  }
-});
-
+<script>
+  var anime = new Biu.anime();
+  var biu = new Biu({
+    name: 'biubiu',
+    //socket: location.protocol + '//' + location.hostname + (location.port ? ':'+location.port : '') ,
+    socket:'https://biu.zhengqingxin.com',
+    onMessage:(data)=>{
+      anime.run(data)
+    }
+  });
+  setInterval(()=>{
+    biu.send('biu~')
+  },1000)
+</script>
 ```
 ps：具体 biu.js 如何使用，参见 [biu.js](https://github.com/zhengqingxin/biu.js)
 
