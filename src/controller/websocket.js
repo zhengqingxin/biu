@@ -1,14 +1,10 @@
-const moment = require('moment');
-
 module.exports = class extends think.Controller {
   constructor(...arg) {
     super(...arg);
   }
 
   openAction() {
-    // this.emit('connected', 'This client opened successfully!');
-    // this.broadcast('joined', 'There is a new client joined successfully!')
-    console.log('user coming')
+    console.log("user coming");
   }
 
   async messageAction() {
@@ -16,43 +12,37 @@ module.exports = class extends think.Controller {
       return this.fail();
     }
     const address = this.websocket.handshake.address;
-    if(!address){
+    if (!address) {
       return this.fail();
     }
-    // const lastEmitTime = await this.model('message').field('create_time').order({create_time:'desc'}).where({address}).limit(1).select();
-    // if(lastEmitTime.length > 0){
-    //   const duration = moment().diff(moment(lastEmitTime[0].create_time),'second');
-    //   if(duration < 1){
-    //     return this.fail();
-    //   }
-    // }
-    const accessLog = await this.cache('access') || {};
+    // 限制频率1秒
+    const accessLog = (await this.cache("access")) || {};
     const now = Date.now();
     accessLog[address] = accessLog[address] || 0;
-    if( now - accessLog[address] > 1000){
+    if (now - accessLog[address] > 1000) {
       accessLog[address] = now;
-      await this.cache('access',accessLog);
-    }else{
+      await this.cache("access", accessLog);
+    } else {
       return this.fail();
     }
-
-    if(this.wsData.text){
+    // xss
+    if (this.wsData.text) {
       this.wsData.text = global.encodeForHTML(this.wsData.text);
-    }else if(typeof this.wsData === 'string'){
+    } else if (typeof this.wsData === "string") {
       this.wsData = global.encodeForHTML(this.wsData.text);
     }
-    
-    this.broadcast('push', this.wsData);
+    // 广播
+    this.broadcast("push", this.wsData);
+    // 入库
     const project = this.websocket.nsp.name.substring(1);
-    const ret = await this.model('project').getByName(project);
+    const ret = await this.model("project").getByName(project);
     if (ret.length > 0) {
-      this.model('message').addItem(this.wsData, project, address);
+      this.model("message").addItem(this.wsData, project, address);
     }
   }
 
   closeAction() {
     // this.emit('connected', 'This client opened successfully!');
-    console.log('a client close')
+    console.log("a client close");
   }
-
-}
+};
